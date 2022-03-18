@@ -15,11 +15,11 @@ const App:FC<Props> = ({value}) => {
         <img src={logo} className="App-logo" alt="logo" />
         <p>Hello Vite + React!</p>
         <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
+          <button role="button" type="button" onClick={() => setCount((count) => count + 1)}>
             count is: {count}
           </button>
         </p>
-        <p id="props">{value}</p>
+        <p role="props">{value}</p>
       </header>
     </div>
   )
