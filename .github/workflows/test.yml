@@ -1,0 +1,9 @@
+name: Test
+on:
+  pull_requests:
+    branches: main
+jobs:
+  Test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: npm run test
