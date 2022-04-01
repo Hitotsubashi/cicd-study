@@ -13,4 +13,6 @@ jobs:
         with:
           node-version: "12.x"
       - name: Running Test
-        run: npm test
+        run: |
+          npm install
+          npm test
