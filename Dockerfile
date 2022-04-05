@@ -6,6 +6,6 @@ COPY . .
 RUN yarn build
 
 FROM nginx:stable-alpine as deploy-stage
-COPY --from=build-stage /app/build/ /usr/share/nginx/html
-EXPOSE 80
+COPY --from=build-stage /app/dist/ /usr/share/nginx/html
+EXPOSE 8081
 CMD ["nginx", "-g", "daemon off;"]
