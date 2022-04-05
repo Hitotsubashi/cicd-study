@@ -1,7 +1,8 @@
-FROM node:12-alpine as build-stage
+FROM node:16-alpine as build-stage
 WORKDIR /app
-COPY . .
+COPY package*.json ./
 RUN yarn install
+COPY . .
 RUN yarn build
 
 FROM nginx:stable-alpine as deploy-stage
