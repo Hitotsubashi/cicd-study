@@ -12,6 +12,9 @@
     "lint:prettier": "prettier --check \"src/**/*\" --end-of-line auto",
     "lint:style": "stylelint --fix 'src/**/*.{css,scss,less}' --cache"
   },
+  "resolutions": {
+    "@types/react": "^17.0.33"
+  },
   "dependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
