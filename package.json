@@ -10,7 +10,7 @@
     "lint": "npm run lint:js && npm run lint:style && npm run lint:prettier",
     "lint:js": "eslint --cache --ext .js,.jsx,.ts,.tsx ./src",
     "lint:prettier": "prettier --check \"src/**/*\" --end-of-line auto",
-    "lint:style": "stylelint --fix 'src/**/*.{css,scss,less}' --cache"
+    "lint:style": "stylelint --fix src/**/*.{css,scss,less} --cache"
   },
   "resolutions": {
     "@types/react": "^17.0.33"

@@ -4,6 +4,7 @@ import App from './App';
 
 test('props is avaliable', () => {
   const value = '123';
+  // 为了多写点测试用例，我给App组件加了个prop
   render(<App value={value} />);
   expect(screen.getByRole('props')).toHaveTextContent(value);
 });
