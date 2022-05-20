@@ -14,7 +14,7 @@ const App: FC<Props> = ({ value }) => {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!!!!!!!!</p>
+        <p>Hello Vite + React!</p>
         <p>
           <button role="button" type="button" onClick={() => setCount((v) => v + 1)}>
             count is: {count}
