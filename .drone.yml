@@ -28,7 +28,7 @@ steps:
         path: /var/run/docker.sock
     commands:
       - echo '开始部署'
-      - docker ps -q --filter "name=$CONTAINER_NAME" | grep -q . && docker stop $CONTAINER_NAME && docker rm -fv $CONTAINER_NAME
+      - docker ps -a -q --filter "name=$CONTAINER_NAME" | grep -q . && docker stop $CONTAINER_NAME && docker rm -fv $CONTAINER_NAME
       - docker build . -t $IMAGE_NAME
       - docker run -p 8081:80 --name $CONTAINER_NAME $IMAGE_NAME
       - echo '部署完成'
