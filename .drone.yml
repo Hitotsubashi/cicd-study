@@ -11,9 +11,25 @@ trigger:
 clone:
   disable: false
 
+volumes:
+  - name: dockersock
+    host:
+      path: /var/run/docker.sock
+
 steps:
   - name: deploy
-    image: node:16
+    image: docker:dind
     depends_on: [clone]
+    environment:
+      CONTAINER_NAME: cicd-study-container
+      IMAGE_NAME: cicd-study-image
+    volumes:
+      - name: dockersock
+        path: /var/run/docker.sock
     commands:
-      - echo get
+      - echo '开始部署'
+      - docker stop {CONTAINER_NAME}
+      - docker rm -f {CONTAINER_NAME}
+      - docker build . -t {IMAGE_NAME}
+      - docker run -p 8081:80 --name ${CONTAINER_NAME} ${IMAGE_NAME}
+      - echo '部署完成'
