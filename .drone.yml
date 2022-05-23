@@ -15,8 +15,8 @@ trigger:
 
 volumes:
   - name: drone_nignx_dist
-  host:
-    path: /drone/dist/
+    host:
+      path: /drone/dist/
 
 steps:
   - name: make
