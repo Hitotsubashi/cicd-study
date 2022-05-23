@@ -19,7 +19,7 @@ volumes:
     path: /drone/dist/
 
 steps:
-  -name: make
+  - name: make
     image: node
     depends_on: [clone]
     volumes:
