@@ -13,7 +13,14 @@ volumes:
     host:
       path: /var/run/docker.sock
 
+clone:
+  disable: true
+
 steps:
+  - name: clone
+    image: alpine/git
+    commands:
+      - git config http.version HTTP/1.1
   - name: deploy
     image: docker:dind
     depends_on: [clone]
