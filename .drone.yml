@@ -8,27 +8,40 @@ trigger:
   event:
     - push
 
-volumes:
-  - name: dockersock
-    host:
-      path: /var/run/docker.sock
+# volumes:
+#   - name: dockersock
+#     host:
+#       path: /var/run/docker.sock
 
-clone:
-  disable: false
+volumes:
+  - name: drone-nignx-dist
+  host:
+    path: /drone/dist/
 
 steps:
-  - name: deploy
-    image: docker:dind
+  -name: make
+    image: node
     depends_on: [clone]
-    environment:
-      CONTAINER_NAME: cicd-study-container
-      IMAGE_NAME: cicd-study-image
     volumes:
-      - name: dockersock
-        path: /var/run/docker.sock
+      - name: drone-nignx-dist
+        path: /drone/dist
     commands:
-      - echo '开始部署'
-      - docker ps -a -q --filter "name=$CONTAINER_NAME" | grep -q . && docker stop $CONTAINER_NAME && docker rm -fv $CONTAINER_NAME
-      - docker build . -t $IMAGE_NAME
-      - docker run -p 8081:80 --name $CONTAINER_NAME $IMAGE_NAME
-      - echo '部署完成'
+      - pwd
+      - yarn install
+      - yarn build
+
+  # - name: deploy
+  #   image: docker:dind
+  #   depends_on: [clone]
+  #   environment:
+  #     CONTAINER_NAME: cicd-study-container
+  #     IMAGE_NAME: cicd-study-image
+  #   volumes:
+  #     - name: dockersock
+  #       path: /var/run/docker.sock
+  #   commands:
+  #     - echo '开始部署'
+  #     - docker ps -a -q --filter "name=$CONTAINER_NAME" | grep -q . && docker stop $CONTAINER_NAME && docker rm -fv $CONTAINER_NAME
+  #     - docker build . -t $IMAGE_NAME
+  #     - docker run -p 8081:80 --name $CONTAINER_NAME $IMAGE_NAME
+  #     - echo '部署完成'
