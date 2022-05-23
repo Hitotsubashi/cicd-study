@@ -13,6 +13,9 @@ volumes:
     host:
       path: /var/run/docker.sock
 
+clone:
+  disable: false
+
 steps:
   - name: deploy
     image: docker:dind
