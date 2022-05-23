@@ -14,7 +14,7 @@ trigger:
 #       path: /var/run/docker.sock
 
 volumes:
-  - name: drone-nignx-dist
+  - name: drone_nignx_dist
   host:
     path: /drone/dist/
 
@@ -23,7 +23,7 @@ steps:
     image: node
     depends_on: [clone]
     volumes:
-      - name: drone-nignx-dist
+      - name: drone_nignx_dist
         path: /drone/dist
     commands:
       - pwd
