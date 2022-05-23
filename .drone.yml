@@ -8,9 +8,6 @@ trigger:
   event:
     - push
 
-clone:
-  disable: false
-
 volumes:
   - name: dockersock
     host:
