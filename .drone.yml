@@ -16,7 +16,7 @@ trigger:
 volumes:
   - name: drone_nignx_dist
     host:
-      path: /drone/dist/
+      path: /drone/dist
 
 steps:
   - name: make
@@ -29,6 +29,7 @@ steps:
       - pwd
       - yarn install
       - yarn build
+      - ls /drone/src
 
   # - name: deploy
   #   image: docker:dind
