@@ -30,8 +30,8 @@ steps:
       - yarn install
       - yarn build
       - ls /drone/src
-      - mkdir -p drone/dist/cicd-study
-      - cp -r ./dist/* drone/dist/cicd-study
+      # - mkdir -p drone/dist/cicd-study
+      - cp -r ./dist/* drone/dist
 
   # - name: deploy
   #   image: docker:dind
