@@ -24,8 +24,6 @@ clone:
 steps:
   - name: clone
     image: alpine/git
-    environment:
-      URL:
     commands:
       - git config --global http.version HTTP/1.1
       - git clone $DRONE_GIT_HTTP_URL "./"
@@ -40,11 +38,11 @@ steps:
     commands:
       - pwd
       - yarn install
-      - yarn build
+      - yarn build --base=/cicd-study
       - ls /drone/src
       - mkdir -p cicd-study
       - cp -r ./dist/* ./cicd-study
-      - cp -r ./cicd-study /drone/dist
+      - cp -rf ./cicd-study /drone/dist
 
   # - name: deploy
   #   image: docker:dind
