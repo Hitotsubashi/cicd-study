@@ -7,6 +7,7 @@ trigger:
     - main
   event:
     - push
+    - pull_request
 
 # volumes:
 #   - name: dockersock
