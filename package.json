@@ -1,7 +1,8 @@
 {
   "name": "cicd-study",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.3.0",
+  "description": "a cicd project for study",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
