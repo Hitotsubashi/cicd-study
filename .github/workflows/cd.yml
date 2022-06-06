@@ -1,7 +1,10 @@
-name: CI
+name: CD
 on:
   push:
     branches: main
 jobs:
-  name: Test
-  run: echo 'Success'
+  CD:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test
+      - run: echo Success
