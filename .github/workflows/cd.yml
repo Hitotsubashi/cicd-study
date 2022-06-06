@@ -40,7 +40,7 @@ jobs:
           draft: false
           prerelease: false
       - name: Building
-        run:
+        run: |
           - yarn build
           - zip assets ./dist/**
       - name: Update Release Asset
