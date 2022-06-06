@@ -3,26 +3,25 @@ on:
   pull_request:
     branches: main
 jobs:
-  Test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-      - name: Use Node.js
-        uses: actions/setup-node@v3
-        with:
-          # vite 需要在node>=12 的环境下执行
-          node-version: '12.x'
-      - name: cache
-        id: cache-dependencies
-        uses: actions/cache@v3
-        with:
-          path: node_modules
-          key: ${{runner.OS}}-${{hashFiles('**/yarn.lock')}}
-      - name: Installing Dependencies
-        if: steps.cache-dependencies.outputs.cache-hit != 'true'
-        run: yarn install
-      - name: Running Lint
-        run: yarn lint
-      - name: Running Test
-        run: yarn test
+  runs-on: ubuntu-latest
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - name: Use Node.js
+      uses: actions/setup-node@v3
+      with:
+        # vite 需要在node>=12 的环境下执行
+        node-version: '12.x'
+    - name: cache
+      id: cache-dependencies
+      uses: actions/cache@v3
+      with:
+        path: node_modules
+        key: ${{runner.OS}}-${{hashFiles('**/yarn.lock')}}
+    - name: Installing Dependencies
+      if: steps.cache-dependencies.outputs.cache-hit != 'true'
+      run: yarn install
+    - name: Running Lint
+      run: yarn lint
+    - name: Running Test
+      run: yarn test
