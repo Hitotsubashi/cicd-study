@@ -53,3 +53,12 @@ jobs:
           asset_path: ./assets.zip
           asset_name: assets.zip
           asset_content_type: application/zip
+      - name: Upload to Deploy Server
+        uses: easingthemes/ssh-deploy@v2.0.7
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_TOKEN }}
+          ARGS: '-avzr --delete'
+          SOURCE: 'dist/'
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{secrets.REMOTE_USER}}
+          TARGET: '/data/www'
