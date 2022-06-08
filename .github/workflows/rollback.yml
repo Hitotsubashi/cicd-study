@@ -9,7 +9,8 @@ on:
 jobs:
   Rollback:
     runs-on: ubuntu-latest
-    env:
-      VERSION: ${{ github.event.inputs.version }}
     steps:
-      echo "Version: ${{VERSION}}"
+      env:
+        VERSION: ${{ github.event.inputs.version }}
+      run: |
+        echo "Version: ${{VERSION}}"
