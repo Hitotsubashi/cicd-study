@@ -10,7 +10,7 @@ jobs:
   Rollback:
     runs-on: ubuntu-latest
     steps:
-      env:
-        VERSION: ${{ github.event.inputs.version }}
-      run: |
-        echo "Version: ${{VERSION}}"
+      - env:
+          VERSION: ${{ github.event.inputs.version }}
+        run: |
+          echo "Version: ${{VERSION}}"
