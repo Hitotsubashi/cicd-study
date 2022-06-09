@@ -1,0 +1,17 @@
+name: Rollback
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'choose a version to deploy'
+        required: true
+        default: 'warning'
+jobs:
+  Rollback:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test
+        env:
+          VERSION: ${{ github.event.inputs.version }}
+        run: |
+          echo "Version: ${{VERSION}}"
