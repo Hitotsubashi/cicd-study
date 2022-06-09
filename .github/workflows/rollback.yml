@@ -14,4 +14,4 @@ jobs:
         env:
           VERSION: ${{ github.event.inputs.version }}
         run: |
-          echo "Version: ${{VERSION}}"
+          echo "Version: $VERSION"
