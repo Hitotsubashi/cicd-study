@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'choose an release to deploy'
+        description: 'choose a version to deploy'
         required: true
         default: 'warning'
 jobs:
