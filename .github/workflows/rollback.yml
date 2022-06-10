@@ -18,6 +18,21 @@ jobs:
         uses: actions/checkout@v2
         with:
           ref: ${{ github.event.inputs.version }}
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          # vite 需要在node>=12 的环境下执行
+          node-version: '12.x'
+      - name: Cache
+        id: cache-dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            **/node_modules
+          key: ${{runner.OS}}-${{hashFiles('**/yarn.lock')}}
+      - name: Installing Dependencies
+        if: steps.cache-dependencies.outputs.cache-hit != 'true'
+        run: yarn install
       - name: Building
         run: |
           yarn build
