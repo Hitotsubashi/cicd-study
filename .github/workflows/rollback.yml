@@ -17,4 +17,5 @@ jobs:
           echo "Version: $VERSION"
       - name: Checkout repository
         uses: actions/checkout@v2
-        ref: ${{ github.event.inputs.version }}
+        with:
+          ref: ${{ github.event.inputs.version }}
