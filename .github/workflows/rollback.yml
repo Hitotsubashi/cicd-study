@@ -13,7 +13,7 @@ jobs:
       - name: Echo Version
         env:
           VERSION: ${{ github.event.inputs.version }}
-        uses: |
+        run: |
           echo "Version: $VERSION"
       - name: Checkout repository
         uses: actions/checkout@v2
