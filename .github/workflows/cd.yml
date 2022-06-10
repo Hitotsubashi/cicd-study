@@ -6,6 +6,8 @@ jobs:
   CD:
     runs-on: ubuntu-latest
     steps:
+      - name: Echo dev
+        run: echo 'dev'
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Use Node.js
