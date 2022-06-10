@@ -10,8 +10,11 @@ jobs:
   Rollback:
     runs-on: ubuntu-latest
     steps:
-      - name: Test
+      - name: Echo Version
         env:
           VERSION: ${{ github.event.inputs.version }}
-        run: |
+        uses: |
           echo "Version: $VERSION"
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        ref: ${{ github.event.inputs.version }}

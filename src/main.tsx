@@ -5,7 +5,7 @@ import App from './App';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App value="1.3.7" />
+    <App value="1.3.8" />
   </React.StrictMode>,
   document.getElementById('root'),
 );
