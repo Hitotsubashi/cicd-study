@@ -1,0 +1,25 @@
+name: Rollback1
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'choose a version to deploy'
+        required: true
+jobs:
+  Rollback1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo Version
+        env:
+          VERSION: ${{ github.event.inputs.version }}
+        run: |
+          echo "Version: $VERSION"
+      - name: Download Artifact
+        uses: dsaltares/fetch-gh-release-asset@master
+        with:
+          version: 'tags/${{ github.event.inputs.version }}'
+          file: 'assets.zip'
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Check
+        run: |
+          ls -a
