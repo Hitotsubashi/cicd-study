@@ -1,4 +1,4 @@
-name: Rollback
+name: Rollback1
 on:
   workflow_dispatch:
     inputs:
@@ -6,7 +6,7 @@ on:
         description: 'choose a version to deploy'
         required: true
 jobs:
-  Rollback:
+  Rollback1:
     runs-on: ubuntu-latest
     steps:
       - name: Echo Version
@@ -14,28 +14,16 @@ jobs:
           VERSION: ${{ github.event.inputs.version }}
         run: |
           echo "Version: $VERSION"
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - name: Download Artifact
+        uses: dsaltares/fetch-gh-release-asset@master
         with:
-          ref: ${{ github.event.inputs.version }}
-      - name: Use Node.js
-        uses: actions/setup-node@v3
-        with:
-          # vite 需要在node>=12 的环境下执行
-          node-version: '12.x'
-      - name: Cache
-        id: cache-dependencies
-        uses: actions/cache@v3
-        with:
-          path: |
-            **/node_modules
-          key: ${{runner.OS}}-${{hashFiles('**/yarn.lock')}}
-      - name: Installing Dependencies
-        if: steps.cache-dependencies.outputs.cache-hit != 'true'
-        run: yarn install
-      - name: Building
+          version: 'tags/${{ github.event.inputs.version }}'
+          file: 'assets.zip'
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Unzip
         run: |
-          yarn build
+          unzip assets.zip
+          ls -a ./dist
       - name: Upload to Deploy Server
         uses: easingthemes/ssh-deploy@v2.0.7
         env:
