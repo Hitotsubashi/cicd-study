@@ -20,6 +20,8 @@ jobs:
           version: 'tags/${{ github.event.inputs.version }}'
           file: 'assets.zip'
           token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Check
+      - name: Unzip
         run: |
+          ls -a
+          unzip assets.zip
           ls -a
