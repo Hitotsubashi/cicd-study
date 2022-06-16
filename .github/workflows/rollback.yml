@@ -1,4 +1,4 @@
-name: Rollback1
+name: Rollback
 on:
   workflow_dispatch:
     inputs:
@@ -6,7 +6,7 @@ on:
         description: 'choose a version to deploy'
         required: true
 jobs:
-  Rollback1:
+  Rollback:
     runs-on: ubuntu-latest
     steps:
       - name: Echo Version
