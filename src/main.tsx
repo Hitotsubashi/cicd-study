@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
+import './index.css';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App value="1.3.16" />
+    <App value="1.3.17" />
   </React.StrictMode>,
   document.getElementById('root'),
 );
