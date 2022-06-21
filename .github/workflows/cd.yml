@@ -12,7 +12,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           # vite 需要在node>=12 的环境下执行
-          node-version: '12.x'
+          # puppeteer 需要在node>=14.1.0 的环境下执行
+          node-version: '16.x'
       - name: Cache
         id: cache-dependencies
         uses: actions/cache@v3
@@ -62,3 +63,6 @@ jobs:
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: ${{secrets.REMOTE_USER}}
           TARGET: '/data/www'
+  E2E-Test:
+    uses: ./.github/workflows/e2e-test.yml
+    needs: [CD]

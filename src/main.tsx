@@ -5,7 +5,7 @@ import './index.css';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App value="1.3.17" />
+    <App value="1.3.18" />
   </React.StrictMode>,
   document.getElementById('root'),
 );
