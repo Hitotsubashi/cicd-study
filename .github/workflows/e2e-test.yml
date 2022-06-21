@@ -10,7 +10,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           # vite 需要在node>=12 的环境下执行
-          node-version: '12.x'
+          # puppeteer 需要在node>=14.1.0 的环境下执行
+          node-version: '14.1.x'
       - name: Cache
         id: cache-dependencies
         uses: actions/cache@v3
