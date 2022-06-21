@@ -18,3 +18,5 @@ describe('Check Page', () => {
     await expect(content).toEqual('count is: 1');
   });
 });
+
+export {};
