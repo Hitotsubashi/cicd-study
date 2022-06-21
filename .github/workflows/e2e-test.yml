@@ -1,0 +1,25 @@
+name: E2E-Test
+on: workflow_call
+jobs:
+  E2E-Test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          # vite 需要在node>=12 的环境下执行
+          node-version: '12.x'
+      - name: Cache
+        id: cache-dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            **/node_modules
+          key: ${{runner.OS}}-${{hashFiles('**/yarn.lock')}}
+      - name: Installing Dependencies
+        if: steps.cache-dependencies.outputs.cache-hit != 'true'
+        run: yarn install
+      - name: Running E2E Test
+        run: yarn test:e2e --URL=http://${{ secrets.REMOTE_HOST }}/
