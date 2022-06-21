@@ -63,5 +63,5 @@ jobs:
           REMOTE_USER: ${{secrets.REMOTE_USER}}
           TARGET: '/data/www'
   E2E-Test:
-    uses: ./e2e-test.yml
+    uses: ./.github/workflows/e2e-test.yml
     needs: [CD]
