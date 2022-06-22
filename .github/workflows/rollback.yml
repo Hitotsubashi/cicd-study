@@ -41,5 +41,5 @@ jobs:
   E2E-Test:
     uses: ./.github/workflows/e2e-test.yml
     needs: [Rollback]
-    if: ${{ github.event.inputs.E2ETest }} == true
+    if: github.event.inputs.E2ETest == true
     secrets: inherit
