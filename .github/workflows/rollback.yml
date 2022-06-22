@@ -5,15 +5,20 @@ on:
       version:
         description: 'choose a version to deploy'
         required: true
+      E2ETest:
+        description: 'enable torun e2e test'
+        default: true
+        type: boolean
 jobs:
   Rollback:
     runs-on: ubuntu-latest
     steps:
-      - name: Echo Version
+      - name: Echo Input
         env:
           VERSION: ${{ github.event.inputs.version }}
         run: |
           echo "Version: $VERSION"
+          echo "Running E2E Test: ${{ github.event.inputs.E2ETest }}"
       - name: Download Artifact
         uses: dsaltares/fetch-gh-release-asset@master
         with:
@@ -33,3 +38,8 @@ jobs:
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: ${{secrets.REMOTE_USER}}
           TARGET: '/data/www'
+  E2E-Test:
+    uses: ./.github/workflows/e2e-test.yml
+    needs: [Rollback]
+    if: ${{ github.event.inputs.E2ETest }} == true
+    secrets: inherit
