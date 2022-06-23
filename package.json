@@ -1,6 +1,6 @@
 {
   "name": "cicd-study",
-  "version": "1.4.4",
+  "version": "1.4.5",
   "private": true,
   "description": "a cicd project for study",
   "scripts": {

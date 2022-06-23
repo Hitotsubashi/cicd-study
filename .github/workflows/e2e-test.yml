@@ -1,5 +1,5 @@
 name: E2E-Test
-on: workflow_call
+on: [workflow_call, workflow_dispatch]
 jobs:
   E2E-Test:
     runs-on: ubuntu-latest
